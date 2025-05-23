@@ -1,0 +1,64 @@
+<div class="container">
+  <h1>Join Estimation Session</h1>
+
+  <div *ngIf="!nameSubmitted" class="name-input-section">
+    <h2>Enter your name to join the session</h2>
+    <div class="name-input-container">
+      <input 
+        [(ngModel)]="userName" 
+        placeholder="Enter your name"
+        class="name-input"
+        (keyup.enter)="submitName()"
+      >
+      <button 
+        (click)="submitName()" 
+        [disabled]="!userName.trim()"
+        class="submit-name-btn"
+      >
+        Join Session
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="nameSubmitted" class="estimation-area">
+    <div *ngFor="let item of workItems" class="work-item">
+      <h3>{{ item.title }}</h3>
+      
+      <div class="estimation-section">
+        <h4>Distance (1-5)</h4>
+        <div class="cards">
+          <app-estimation-card
+            *ngFor="let value of [1,2,3,4,5]"
+            [value]="value"
+            [selected]="item.distance === value"
+            (cardSelected)="updateDistance(item, $event)"
+          ></app-estimation-card>
+        </div>
+      </div>
+
+      <div class="estimation-section">
+        <h4>Friction (1-5)</h4>
+        <div class="cards">
+          <app-estimation-card
+            *ngFor="let value of [1,2,3,4,5]"
+            [value]="value"
+            [selected]="item.friction === value"
+            (cardSelected)="updateFriction(item, $event)"
+          ></app-estimation-card>
+        </div>
+      </div>
+
+      <div class="estimation-section">
+        <h4>Relativity (1-5)</h4>
+        <div class="cards">
+          <app-estimation-card
+            *ngFor="let value of [1,2,3,4,5]"
+            [value]="value"
+            [selected]="item.relativity === value"
+            (cardSelected)="updateRelativity(item, $event)"
+          ></app-estimation-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
