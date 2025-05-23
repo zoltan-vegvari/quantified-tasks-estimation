@@ -15,6 +15,8 @@ export class HomeComponent {
   shareableLink = '';
   workItems: any[] = [];
   newItemTitle = '';
+  userName = '';
+  nameSubmitted = false;
 
   createSession() {
     this.sessionCreated = true;
@@ -28,6 +30,12 @@ export class HomeComponent {
   copyLink(input: HTMLInputElement) {
     input.select();
     document.execCommand('copy');
+  }
+
+  submitName() {
+    if (this.userName.trim()) {
+      this.nameSubmitted = true;
+    }
   }
 
   addWorkItem() {

@@ -2,12 +2,31 @@
   <h1>Work Item Estimation</h1>
   
   <div class="session-creation">
-    <button (click)="createSession()" class="create-btn">
+    <button (click)="createSession()" class="create-btn" *ngIf="!sessionCreated">
       Create New Session
     </button>
   </div>
 
-  <div *ngIf="sessionCreated" class="estimation-area">
+  <div *ngIf="sessionCreated && !nameSubmitted" class="name-input-section">
+    <h2>Enter your name to continue</h2>
+    <div class="name-input-container">
+      <input 
+        [(ngModel)]="userName" 
+        placeholder="Enter your name"
+        class="name-input"
+        (keyup.enter)="submitName()"
+      >
+      <button 
+        (click)="submitName()" 
+        [disabled]="!userName.trim()"
+        class="submit-name-btn"
+      >
+        Continue
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="sessionCreated && nameSubmitted" class="estimation-area">
     <div class="shareable-link">
       <p>Share this link with others:</p>
       <div class="link-container">
