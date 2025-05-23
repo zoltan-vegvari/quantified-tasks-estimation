@@ -5,15 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-estimation-card',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div 
-      class="card" 
-      [class.selected]="selected"
-      (click)="onSelect()"
-    >
-      <div class="value">{{ value }}</div>
-    </div>
-  `,
+  templateUrl: './estimation-card.component.html',
   styles: [`
     .card {
       width: 80px;
