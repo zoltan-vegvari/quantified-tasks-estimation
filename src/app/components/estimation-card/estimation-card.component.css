@@ -1,0 +1,27 @@
+.card {
+  width: 80px;
+  height: 120px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 8px;
+  transition: all 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card.selected {
+  border-color: #007bff;
+  background-color: #e7f1ff;
+}
+
+.value {
+  font-size: 24px;
+  font-weight: bold;
+}
